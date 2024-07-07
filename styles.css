@@ -1,0 +1,15 @@
+.scaled-content {
+  transform: scale(2); /* Adjust the scale factor as needed */
+  transform-origin: top left; /* Keep the origin at the top left corner */
+}
+
+@font-face {
+  font-family: Felonships;
+  src: url("Felonships.TTF");
+}
+* {
+  font-family: Felonships;
+}
+p {
+  letter-spacing: -0.5px;
+}
