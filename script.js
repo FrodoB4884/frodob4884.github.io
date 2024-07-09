@@ -6,6 +6,9 @@ document.addEventListener('DOMContentLoaded', function() {
       data.forEach(repo => {
         const project = document.createElement('div');
         project.classList.add('project');
+		
+		const endBreak = document.createElement('hr')
+		project.appendChild(endBreak);
 
         const projectTitle = document.createElement('h3');
         projectTitle.textContent = repo.name;
@@ -20,9 +23,6 @@ document.addEventListener('DOMContentLoaded', function() {
         projectLink.textContent = 'View on GitHub';
         projectLink.target = '_blank';
         project.appendChild(projectLink);
-
-	const endBreak = document.createElement('hr')
-	project.appendChild(endBreak);
 
         projectsContainer.appendChild(project);
       });
