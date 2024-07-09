@@ -1,15 +1,69 @@
-.scaled-content {
-  transform: scale(2); /* Adjust the scale factor as needed */
-  transform-origin: top left; /* Keep the origin at the top left corner */
-}
-
 @font-face {
   font-family: Felonships;
-  src: url("Felonships.ttf");
+  src: url("Felonships.ttf") format('truetype');
+  font-weight: normal;
+  font-style: normal;
 }
-* {
-  font-family: Felonships;
+
+body {
+  font-family: Felonships, sans-serif;
+  font-size: 250%;
+  margin: 0;
+  padding: 0;
+  background-color: #f4f4f4;
+  color: #000000;
+  line-height: 1.6;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
+
 p {
-  letter-spacing: -0.5px;
+	font-size: 100%;
+	letter-spacing: -0.5px;
+}
+
+header {
+  background: #000000;
+  color: #fff;
+  padding: 10px 0;
+  text-align: center;
+}
+
+header h1 {
+  margin: 0;
+}
+
+nav ul {
+  padding: 0;
+  list-style: none;
+}
+
+nav ul li {
+  display: inline;
+  margin: 0 15px;
+}
+
+nav ul li a {
+  color: #fff;
+  text-decoration: none;
+}
+
+main {
+  flex: 1;
+}
+
+section {
+  padding: 20px;
+  margin: 20px auto;
+  width: 80%;
+  background: #fff;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+footer {
+  text-align: center;
+  padding: 20px 0;
+  background: #000000;
+  color: #fff;
 }
