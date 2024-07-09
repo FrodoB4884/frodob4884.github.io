@@ -21,6 +21,9 @@ document.addEventListener('DOMContentLoaded', function() {
         projectLink.target = '_blank';
         project.appendChild(projectLink);
 
+	const endBreak = document.createElement('hr')
+	project.appendChild(endBreak);
+
         projectsContainer.appendChild(project);
       });
     });
