@@ -98,9 +98,13 @@ body {
   min-height: 100vh;
 }
 
+a {
+  font-size: 75%;
+}
+
 p {
   font-size: 100%;
-  letter-spacing: -0.5px;
+  letter-spacing: -1.5px;
 }
 
 header {
@@ -113,6 +117,10 @@ header {
 header h1 {
   margin: 0;
   font-weight: normal;
+}
+
+h3 {
+  text-decoration: underline;
 }
 
 nav ul {
@@ -140,6 +148,10 @@ section {
   width: 80%;
   background: #fff;
   box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+.top {
+  background: #000000;	
 }
 
 footer {

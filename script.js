@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const project = document.createElement('div');
         project.classList.add('project');
 		
-		const endBreak = document.createElement('hr')
+		const endBreak = document.createElement('hr');
 		project.appendChild(endBreak);
 
         const projectTitle = document.createElement('h3');
