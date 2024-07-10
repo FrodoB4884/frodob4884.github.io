@@ -28,3 +28,18 @@ document.addEventListener('DOMContentLoaded', function() {
       });
     });
 });
+
+function openModal(imageSrc, captionText) {
+    var modal = document.getElementById("modal");
+    var modalImg = document.getElementById("modal-img");
+    var caption = document.getElementById("caption");
+
+    modal.style.display = "block";
+    modalImg.src = imageSrc;
+    caption.innerHTML = captionText;
+}
+
+function closeModal() {
+    var modal = document.getElementById("modal");
+    modal.style.display = "none";
+}
