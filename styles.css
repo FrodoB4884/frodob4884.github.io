@@ -34,18 +34,20 @@ hr {
 
 .grid-container {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    grid-template-columns: repeat(2, 1fr);
     gap: 10px;
 }
 
 .grid-item {
     cursor: pointer;
+    padding: 10px; /* Adjust the padding value as needed */
 }
 
 .grid-item img {
     width: 100%;
     height: auto;
     display: block;
+    box-sizing: border-box; /* Ensures padding is included in the total width and height */
 }
 
 .modal {
@@ -120,7 +122,7 @@ a {
 p {
   font-size: 100%;
   margin-top: 0px;
-  letter-spacing: -1.5px;
+  letter-spacing: -1px;
 }
 
 header {
