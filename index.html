@@ -1,90 +1,96 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>FrodoB4884 Portfolio</title>
-	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css" />
-  </head>
-  <body>
-    <header>
-	  <section id="top" class="top">
-        <h1 style="font-size:200%;">FrodoB4884</h1>
-	  </section>
-      <nav>
-        <ul>
-          <li><a href="#about">About</a></li>
-          <li><a href="#projects">Projects</a></li>
-		  <li><a href="#art">Art</a></li>
-          <li><a href="#contact">Contact</a></li>
-        </ul>
-      </nav>
-    </header>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FrodoB4884 Portfolio</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header>
+    <section id="top" class="top">
+      <h1 style="font-size:300%;">Eliot Potts</h1>
+    </section>
+    <nav>
+      <ul>
+        <li><a href="#about">About</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#art">Art</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+  <img src="Images/headermerge.png" class="gradient">
+  <main>
+    <section id="about">
+      <div class="section-header">
+        <h2>About Me</h2>
+        <a href="#top" class="up-arrow"><i class="fa fa-arrow-up"></i></a>
+      </div>
+      <p id="github-about"></p>
+      <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=FrodoB4884&hide_progress=true&hide_border=true&bg_color=54143f&text_color=942c4b&title_color=942c4b" alt="GitHub Stats" class="stats"/>
+    </section>
 
-    <main>
-      <section id="about">
-		<div class="section-header">
-		  <h2>About Me</h2>
-		  <a href="#top" class="up-arrow"><i class="material-icons">arrow_upward</i></a>
+    <section id="projects">
+      <div class="section-header">
+        <h2>Projects</h2>
+        <a href="#top" class="up-arrow"><i class="fa fa-arrow-up"></i></a>
+      </div>
+	  <p>My Github profile is <a href="https://github.com/FrodoB4884">FrodoB4884</a> and here are some of the projects i have been working on: </p>
+      <div id="github-projects">
+        <!-- GitHub projects will be loaded here -->
+      </div>
+    </section>
+  
+    <section id="art">
+      <div class="section-header">
+        <h2>Art</h2>
+        <a href="#top" class="up-arrow"><i class="fa fa-arrow-up"></i></a>
+      </div>
+      <p>Click to enlarge images.</p>
+      <div class="grid-container">
+        <!-- I can add more art below -->
+        <div class="grid-item" onclick="openModal('Art/Unik Scene.gif', 'Unik running and gliding')">
+          <img src="Art/Unik Scene.gif" alt="Art Piece 1">
         </div>
-		<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus lacinia odio vitae vestibulum vestibulum. Cras venenatis euismod malesuada.</p>
-      </section>
+        <div class="grid-item" onclick="openModal('Art/St Patrick\'s Scene.gif', 'St Patrick\'s day')">
+          <img src="Art/St Patrick's Scene.gif" alt="Art Piece 2">
+        </div>
+        <div class="grid-item" onclick="openModal('Art/Felix Portrait.png', 'Profile Picture')">
+          <img src="Art/Felix Portrait.png" alt="Art Piece 3">
+        </div>
+        <div class="grid-item" onclick="openModal('Art/Castle Scene.gif', 'Hero at the Gates')">
+          <img src="Art/Castle Scene.gif" alt="Art Piece 4">
+        </div>
+      </div>
 
-      <section id="projects">
-		<div class="section-header">
-          <h2>Projects</h2>
-		  <a href="#top" class="up-arrow"><i class="material-icons">arrow_upward</i></a>
-        </div>
-        <div id="github-projects">
-          <!-- GitHub projects will be loaded here -->
-        </div>
-      </section>
-	  
-	  <section id="art">
-		<div class="section-header">
-          <h2>Art</h2>
-		  <a href="#top" class="up-arrow"><i class="material-icons">arrow_upward</i></a>
-        </div>
-		<p>Click to enlarge images.</p>
-		<div class="grid-container">
-	      <!-- I can add more art below -->
-		  <div class="grid-item" onclick="openModal('Art/Unik Scene.gif', 'Unik running and gliding')">
-            <img src="Art/Unik Scene.gif" alt="Art Piece 1">
-          </div>
-          <div class="grid-item" onclick="openModal('Art/St Patrick\'s Scene.gif', 'St Patrick\'s day')">
-            <img src="Art/St Patrick's Scene.gif" alt="Art Piece 2">
-          </div>
-		  <div class="grid-item" onclick="openModal('Art/Felix Portrait.png', 'Profile Picture')">
-            <img src="Art/Felix Portrait.png" alt="Art Piece 3">
-          </div>
-		  <div class="grid-item" onclick="openModal('Art/Castle Scene.gif', 'Hero at the Gates')">
-            <img src="Art/Castle Scene.gif" alt="Art Piece 4">
-          </div>
-		</div>
+      <div id="modal" class="modal">
+        <span class="fa fa-close" onclick="closeModal()" style="color:var(--tertiary);padding-left:15px"></span>
+        <img class="modal-content" id="modal-img">
+        <div id="caption"></div>
+      </div>
+  
+    </section>
 
-		<div id="modal" class="modal">
-          <span class="material-icons close-btn" onclick="closeModal()">close</span>
-          <img class="modal-content" id="modal-img">
-          <div id="caption"></div>
-        </div>
-		
-      </section>
+    <section id="contact">
+      <div class="section-header">
+        <h2>Contact</h2>
+        <a href="#top" class="up-arrow"><i class="fa fa-arrow-up"></i></a>
+      </div>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus lacinia odio vitae vestibulum vestibulum. Cras venenatis euismod malesuada.</p>
+	  <center><div class="socials-bar">
+		<a href="https://github.com/FrodoB4884"><i class="fa fa-github"></i></a>
+		<a href="mailto: eliot.f.potts@gmail.com"><i class="fa fa-envelope"></i></a>
+	  </div></center>
+	</section>
+  
+  </main>
+  <img src="Images/footermerge.png" class="gradient">
+  <footer>
+    <p>&copy; 2024 Eliot Potts</p>
+  </footer>
 
-      <section id="contact">
-		<div class="section-header">
-          <h2>Contact</h2>
-		  <a href="#top" class="up-arrow"><i class="material-icons">arrow_upward</i></a>
-        </div>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus lacinia odio vitae vestibulum vestibulum. Cras venenatis euismod malesuada.</p>
-      </section>
-	  
-    </main>
-
-    <footer>
-      <p>&copy; 2024 FrodoB4884</p>
-    </footer>
-
-    <script src="script.js"></script>
-  </body>
+  <script src="script.js"></script>
+</body>
 </html>
