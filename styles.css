@@ -12,6 +12,10 @@
   font-style: normal;
 }
 
+.name-header {
+  line-height: 60% !important;
+}
+
 a {
   color: var(--quaternary);
   font-size: 100%;
