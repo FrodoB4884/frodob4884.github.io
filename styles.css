@@ -65,6 +65,7 @@ span {
 }
 
 .grid-item {
+  cursor: pointer;
   display: block;
   overflow: hidden;
 }
