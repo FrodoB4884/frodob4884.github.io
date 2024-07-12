@@ -80,20 +80,35 @@ document.addEventListener('DOMContentLoaded', function() {
       .then(response => response.json())
       .then(data => {
         if (Array.isArray(data)) {
-          data.forEach(file => {
-            if (file.type === "file" && (file.name.endsWith(".png") || file.name.endsWith(".jpg") || file.name.endsWith(".gif"))) {
-              const imgElement = document.createElement("img");
-              imgElement.src = file.download_url;
-              imgElement.alt = file.name;
+          const imagePromises = data
+            .filter(file => file.type === "file" && (file.name.endsWith(".png") || file.name.endsWith(".jpg") || file.name.endsWith(".gif")))
+            .map(file => {
+              return new Promise((resolve, reject) => {
+                const img = new Image();
+                img.src = file.download_url;
+                img.onload = () => {
+                  resolve({
+                    element: img,
+                    ratio: img.width / img.height,
+                    name: file.name
+                  });
+                };
+                img.onerror = reject;
+              });
+            });
 
+          Promise.all(imagePromises).then(images => {
+            images.sort((a, b) => b.ratio - a.ratio);
+
+            images.forEach(image => {
               const gridItem = document.createElement("div");
               gridItem.className = "grid-item";
-              gridItem.appendChild(imgElement);
-              gridItem.onclick = () => openModal(file.download_url, file.name);
+              gridItem.appendChild(image.element);
+              gridItem.onclick = () => openModal(image.element.src, image.name);
 
               artContainer.appendChild(gridItem);
-            }
-          });
+            });
+          }).catch(error => console.error('Error loading images:', error));
         } else {
           console.error("Error: No images found in the Art folder.");
         }
