@@ -1,10 +1,14 @@
 document.addEventListener('DOMContentLoaded', function() {
   const cacheKey = 'githubReposCache';
-  const cacheExpiration = 5 * 60 * 60 * 1000; // Cache expiration time in milliseconds (24 hours)
+  const cacheExpiration = 5 * 60 * 60 * 1000; // Cache expiration time in milliseconds (5 hours)
+  const username = "FrodoB4884";
+  const repo = "frodob4884.github.io";
+  const artFolder = "Art";
+  const artContainer = document.querySelector('#art .grid-container');
 
-  // Function to fetch data from the API
+  // Function to fetch data from the GitHub API
   const fetchData = () => {
-    fetch('https://api.github.com/users/FrodoB4884/repos')
+    fetch(`https://api.github.com/users/${username}/repos`)
       .then(response => response.json())
       .then(data => {
         // Save data to localStorage with a timestamp
@@ -17,7 +21,7 @@ document.addEventListener('DOMContentLoaded', function() {
       });
   };
 
-  // Function to display the data
+  // Function to display GitHub repos data
   const displayData = (data) => {
     const projectsContainer = document.getElementById('github-projects');
     projectsContainer.innerHTML = ''; // Clear existing content
@@ -47,6 +51,56 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   };
 
+  // Function to fetch and display README content
+  const fetchReadme = () => {
+    const readmeUrl = `https://api.github.com/repos/${username}/${username}/contents/README.md`;
+
+    fetch(readmeUrl)
+      .then(response => response.json())
+      .then(data => {
+        if (data.content) {
+          // The content is Base64 encoded, so decode it
+          const content = atob(data.content);
+          document.getElementById("github-about").innerText = content;
+        } else {
+          document.getElementById("github-about").innerText = "README not found.";
+        }
+      })
+      .catch(error => {
+        console.error('Error fetching the README:', error);
+        document.getElementById("github-about").innerText = "Error fetching the README.";
+      });
+  };
+
+  // Function to fetch images from GitHub repo
+  const fetchArtImages = () => {
+    const apiUrl = `https://api.github.com/repos/${username}/${repo}/contents/${artFolder}`;
+
+    fetch(apiUrl)
+      .then(response => response.json())
+      .then(data => {
+        if (Array.isArray(data)) {
+          data.forEach(file => {
+            if (file.type === "file" && (file.name.endsWith(".png") || file.name.endsWith(".jpg") || file.name.endsWith(".gif"))) {
+              const imgElement = document.createElement("img");
+              imgElement.src = file.download_url;
+              imgElement.alt = file.name;
+
+              const gridItem = document.createElement("div");
+              gridItem.className = "grid-item";
+              gridItem.appendChild(imgElement);
+              gridItem.onclick = () => openModal(file.download_url, file.name);
+
+              artContainer.appendChild(gridItem);
+            }
+          });
+        } else {
+          console.error("Error: No images found in the Art folder.");
+        }
+      })
+      .catch(error => console.error('Error fetching images from GitHub:', error));
+  };
+
   // Check if data is available in localStorage
   const cachedData = localStorage.getItem(cacheKey);
   if (cachedData) {
@@ -56,47 +110,33 @@ document.addEventListener('DOMContentLoaded', function() {
     // Check if cache is still valid
     if (currentTime - parsedCacheData.timestamp < cacheExpiration) {
       displayData(parsedCacheData.data);
-      return;
+    } else {
+      fetchData();
     }
+  } else {
+    fetchData();
   }
 
-  // If no valid cache, fetch new data
-  fetchData();
+  fetchReadme();
+  fetchArtImages(); // Call the function to load images
 });
 
-document.addEventListener("DOMContentLoaded", function() {
-    const username = "FrodoB4884"; // replace with the GitHub username
-    const readmeUrl = `https://api.github.com/repos/${username}/${username}/contents/README.md`;
-
-    fetch(readmeUrl)
-        .then(response => response.json())
-        .then(data => {
-            if (data.content) {
-                // The content is Base64 encoded, so decode it
-                const content = atob(data.content);
-                document.getElementById("github-about").innerText = content;
-            } else {
-                document.getElementById("github-about").innerText = "README not found.";
-            }
-        })
-        .catch(error => {
-            console.error('Error fetching the README:', error);
-            document.getElementById("github-about").innerText = "Error fetching the README.";
-        });
-});
-
-
+// Function to open the modal with the clicked image
 function openModal(imageSrc, captionText) {
-    var modal = document.getElementById("modal");
-    var modalImg = document.getElementById("modal-img");
-    var caption = document.getElementById("caption");
+  var modal = document.getElementById("modal");
+  var modalImg = document.getElementById("modal-img");
+  var caption = document.getElementById("caption");
 
-    modal.style.display = "block";
-    modalImg.src = imageSrc;
-    caption.innerHTML = captionText;
+  // Remove the file extension from the caption text
+  var captionWithoutExtension = captionText.replace(/\.[^/.]+$/, "");
+
+  modal.style.display = "block";
+  modalImg.src = imageSrc;
+  caption.innerHTML = captionWithoutExtension;
 }
 
+// Function to close the modal
 function closeModal() {
-    var modal = document.getElementById("modal");
-    modal.style.display = "none";
+  var modal = document.getElementById("modal");
+  modal.style.display = "none";
 }

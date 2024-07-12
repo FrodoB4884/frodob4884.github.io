@@ -89,11 +89,29 @@ span {
     background-color: rgba(0,0,0,0.9);
 }
 
+.modal .close-btn {
+    position: fixed; /* Ensures the button stays fixed within the modal */
+    top: 15px; 
+    right: 35px; 
+    color: white; 
+    font-size: 40px; 
+    font-weight: bold; 
+    cursor: pointer;
+    z-index: 2; /* Make sure it is above other modal contents */
+}
+
 .modal-content {
     margin: auto;
     display: block;
     width: 80%;
-    max-width: 700px;
+	height: auto;
+}
+
+.modal .close-btn:hover,
+.modal .close-btn:focus {
+    color: #bbb;
+    text-decoration: none;
+    cursor: pointer;
 }
 
 #caption {
