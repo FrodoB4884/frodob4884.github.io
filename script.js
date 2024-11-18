@@ -53,26 +53,31 @@ document.addEventListener('DOMContentLoaded', function() {
 
   // Function to fetch and display README content
 	const fetchReadme = () => {
-	  const readmeUrl = `https://api.github.com/repos/${username}/${username}/contents/README.md`;
+ 		 const readmeUrl = `https://api.github.com/repos/${username}/${username}/contents/README.md`;
 
-	  fetch(readmeUrl)
-		.then(response => response.json())
-		.then(data => {
-		  if (data.content) {
-			// The content is Base64 encoded, decode it
-			const content = atob(data.content);
-			// Decode as UTF-8
-			const utf8Content = new TextDecoder("utf-8").decode(new Uint8Array([...content].map(char => char.charCodeAt(0))));
-			document.getElementById("github-about").innerText = utf8Content;
-		  } else {
-			document.getElementById("github-about").innerText = "README not found.";
-		  }
-		})
-		.catch(error => {
-		  console.error('Error fetching the README:', error);
-		  document.getElementById("github-about").innerText = "Error fetching the README.";
-		});
-	};
+		  fetch(readmeUrl)
+ 		   .then(response => response.json())
+ 		   .then(data => {
+  		    if (data.content) {
+  		      // The content is Base64 encoded, decode it
+  		      const content = atob(data.content);
+   		     // Decode as UTF-8
+ 		       const utf8Content = new TextDecoder("utf-8").decode(new Uint8Array([...content].map(char => char.charCodeAt(0))));
+
+   		     // Convert the decoded Markdown content to HTML using marked.js
+ 		       const htmlContent = marked.parse(utf8Content); // Use the correct `marked` method
+
+ 		       // Inject the HTML content into the page
+ 		       document.getElementById("github-about").innerHTML = htmlContent;
+  		    } else {
+  		      document.getElementById("github-about").innerText = "README not found.";
+ 		     }
+ 		   })
+ 		   .catch(error => {
+  		    console.error('Error fetching the README:', error);
+  		    document.getElementById("github-about").innerText = "Error fetching the README.";
+  		  });
+		};
 
 
   // Function to fetch images from GitHub repo
