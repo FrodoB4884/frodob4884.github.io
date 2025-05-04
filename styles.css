@@ -1,8 +1,12 @@
 :root {
-  --primary: #2c223c;
-  --secondary: #464969;
-  --tertiary: #5c8ba8;
-  --quaternary: #44355d;
+  --primary: #341823;
+  --secondary: #e3a084;
+  --tertiary: #ffe6c7;
+  --quaternary: #c77369;
+}
+
+*{
+  overflow-wrap: break-word;
 }
 
 @font-face {
@@ -19,6 +23,10 @@
 a {
   color: var(--quaternary);
   font-size: 100%;
+}
+
+a:hover {
+  color: var(--tertiary);
 }
 
 html {
