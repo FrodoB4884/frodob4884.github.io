@@ -21,12 +21,12 @@
 }
 
 a {
-  color: var(--quaternary);
+  color: var(--secondary);
   font-size: 100%;
 }
 
 a:hover {
-  color: var(--tertiary);
+  color: var(--quaternary);
 }
 
 html {
@@ -57,7 +57,7 @@ span {
 
 .section-header {
     display: flex;
-	justify-content: space-between;
+    justify-content: space-between;
     align-items: center;
 }
 
