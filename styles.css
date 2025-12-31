@@ -1,5 +1,6 @@
 :root {
 	--dark-color: #2e3140;
+	--alternative-color: #ff0000;
 	--light-color: #ffffff;
 }
 
@@ -20,7 +21,7 @@
 
 body {
 	margin: 0;
-	font-family: sans-serif;
+	font-family: Inter, sans-serif;
 	color: var(--dark-color);
 	background: var(--light-color);
 
@@ -41,7 +42,7 @@ body {
 	padding: 20px;
 }
 
-input[type=text], input[type=email] {
+input[type=text], input[type=email], textarea {
 	width: 100%;
 	padding: 12px;
 	border: 1px solid;
@@ -49,6 +50,10 @@ input[type=text], input[type=email] {
 	box-sizing: border-box;
 	margin-top: 6px;
 	margin-bottom: 16px;
+}
+
+textarea {
+	resize: vertical;
 }
 
 /* --- Top bar --- */
@@ -78,7 +83,7 @@ input[type=text], input[type=email] {
 	display: flex;
 	gap: 1.5rem;
 	padding: 1.5rem;
-	margin-bottom: 1.5rem;
+	margin-bottom: 1rem;
 	overflow: hidden;
 }
 
@@ -100,6 +105,10 @@ input[type=text], input[type=email] {
     background-color: var(--dark-color);
     width: 100%;
     margin: 20px auto;
+}
+
+a:hover {
+	color: var(--alternative-color);
 }
 
 /* --- Nav links --- */
