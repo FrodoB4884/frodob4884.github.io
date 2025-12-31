@@ -1,0 +1,6 @@
+[
+	{ "title": "About", "file": "about.md", "section": "nav" },
+	{ "title": "Projects", "file": "projects.md", "section": "nav"},
+	{ "title": "Maze Algorithms", "file": "maze.md", "section": "projects"},
+	{ "title": "6 DOF Robot Arm", "file": "robot_arm.md", "section": "projects"}
+]

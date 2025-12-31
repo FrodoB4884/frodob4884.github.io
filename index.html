@@ -1,21 +1,55 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>FrodoB4884 Portfolio</title>
-</head>
-<body>
-  <header>
-    <section id="top" class="top">
-      <h1>Eliot Potts</h1>
-	</section>
-  </header>
-  <main>
-	  <p>Under maintainence...</p>
-  </main>
-  <footer>
-    <p>&copy; 2025 Eliot Potts</p>
-  </footer>
-</body>
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Eliot Potts Portfolio</title>
+		<link rel="icon" type="image/x-icon" href="images/favicon.png">
+		<link rel="stylesheet" href="styles.css"/>
+		<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+		<script>
+			window.MathJax = {
+				tex: {
+					inlineMath: [['$', '$'], ['\\(', '\\)']],
+					displayMath: [['$$', '$$'], ['\\[', '\\]']]
+				},
+				options: {
+					skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+				}
+			};
+		</script>
+		<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+		<script src="script.js" defer></script>
+	</head>
+	<body>
+		<header class="topbar">
+			<a href="" class="myname"><h2>Eliot Potts</h2></a>
+			<div class="icons-div">
+				<a href="https://github.com/FrodoB4884" class="icon">
+					<img
+					src="images/github.svg"
+					alt="github"/>
+				</a>
+				<a href="index.html#contact" class="icon">
+					<img
+					src="images/email.svg"
+					alt="email"/>
+				</a>
+				<button id="menu-toggle" aria-label="Open menu">☰</button>
+			</div>
+		</header>
+		
+		<div class="container">
+			<aside id="sidebar" class="sidebar">
+				<nav id="nav"></nav>
+				<hr class="sidebar-hr">
+				<nav id="projects"></nav>
+			</aside>
+
+			<main>
+				<div id="content"></div>
+			</main>
+		</div>
+
+	</body>
 </html>
